@@ -1,10 +1,16 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 
+import { login } from './../../redux/user.redux';
 import { List, InputItem, WingBlank, WhiteSpace, Button, Radio } from 'antd-mobile';
 
 import Logo from './../../component/logo/logo';
 const RadioItem = Radio.RadioItem;
 
+@connect(
+  state => state,
+  { login }
+)
 class Login extends Component {
   constructor(props) {
     super(props);
@@ -23,7 +29,8 @@ class Login extends Component {
     this.props.history.push('/register');
   }
   handleLogin() {
-    console.log(this.state);
+    let data = this.state;
+    this.props.login(data);
   }
   render() {
     const { type } = this.state;

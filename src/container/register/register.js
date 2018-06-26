@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Redirect } from 'react-router-dom';
 
 import { List, InputItem, WingBlank, WhiteSpace, Button, Radio } from 'antd-mobile';
 
@@ -17,8 +18,8 @@ class Register extends Component {
     super(props);
     this.state = {
       user: '', // 输入用户名
-      psw: '', // 输入密码
-      repeatPsw: '', // 重复密码
+      pwd: '', // 输入密码
+      repeatPwd: '', // 重复密码
       type: 'ginus' // 角色
     }
   }
@@ -37,10 +38,10 @@ class Register extends Component {
   render() {
     const { type } = this.state;
     const { user } = this.props;
-    console.log(this.props);
     return (
       <div>
         <Logo />
+        {user.redirectTo ? <Redirect to={user.redirectTo} /> : null}
         <div className="err-msg">{user.msg}</div>
         <WingBlank>
           <List>
@@ -50,11 +51,11 @@ class Register extends Component {
             >用户名：</InputItem>
             <InputItem
               placeholder="请输入密码"
-              onChange={v => this.handleChange('psw', v)}
+              onChange={v => this.handleChange('pwd', v)}
             >密码：</InputItem>
             <InputItem
               placeholder="请确认密码"
-              onChange={v => this.handleChange('repeatPsw', v)}
+              onChange={v => this.handleChange('repeatPwd', v)}
             >重复密码：</InputItem>
             <WhiteSpace />
             <RadioItem
