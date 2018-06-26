@@ -1,0 +1,6 @@
+/* 全局错误信息样式 */
+
+.err-msg {
+  color: #f06;
+  padding: 5px 10px;
+}

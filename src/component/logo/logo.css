@@ -1,0 +1,8 @@
+.logo-container {
+  margin: 20px 0;
+}
+.logo-container img {
+  display: block;
+  margin: 0 auto;
+  width: 260px;
+}
